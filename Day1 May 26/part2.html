@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <fieldset>
+        <legend>Group 1:</legend>
+        <input type="checkbox" name="g1" id="g1cb1" value="g1_check1">
+        <label for="g1cb1">Check 1</label>
+        <input type="checkbox" name="g1" id="g1cb2" value="g1_check2"> 
+        <label for="g1cb2">Check 2</label>
+        <br>
+        <button type="submit" onclick="g1Value()">Submit</button>
+    </fieldset>
+
+    <div id="g1Text">G1 values: <br>   </div>
+
+    <fieldset>
+        <legend>Group 2:</legend>
+        <input type="checkbox" name="g2" id="g2cb1" value="g2_check1">
+        <label for="g1cb1">New Check 1</label>
+        <input type="checkbox" name="g2" id="g2cb2" value="g2_check2"> 
+        <label for="g2cb2">New Check 2</label>
+        <br>
+        <button type="submit" onclick="g2Value()">Submit</button>
+    </fieldset>
+
+
+    <div id="g2Text">   </div>
+
+
+    <script>
+        function g1Value() {
+            document.getElementById('g1Text').innerHTML = 'G1 values: <br>'
+            var items = document.getElementsByName('g1');
+            for (let i = 0; i < items.length; i++) {
+                if (items[i].checked) {
+                    document.getElementById('g1Text').innerHTML += (items[i].value + '<br>');
+                }
+            }
+        }
+
+
+        function g2Value() {
+            var items = document.getElementsByName('g2');
+            for (let i = 0; i < items.length; i++) {
+                if (items[i].checked) {
+                    document.getElementById('g2Text').innerHTML += (items[i].value + '<br>')
+                }
+            }
+        }
+    </script>
+</body>
+</html>
