@@ -20,9 +20,11 @@
     <script>
         function check() {
             if (document.getElementById('read').checked == true) {
+                document.getElementById('tx').value = 'Readonly Set';
                 document.getElementById('tx').readOnly = true;
             }
             else {
+                document.getElementById('tx').value = '';
                 document.getElementById('tx').readOnly = false;
             }
         }
