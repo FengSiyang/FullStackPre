@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <input type="checkbox" name="readCheck" id="read">
+        <label for="read">Check for Readonly!</label> <br>
+        <button type="submit" onclick="check()">Submit</button>
+    </div>
+    <hr>
+    <div>
+        <input type="text" name="textField" id="tx">
+    </div>
+
+    <script>
+        function check() {
+            if (document.getElementById('read').checked == true) {
+                document.getElementById('tx').readOnly = true;
+            }
+            else {
+                document.getElementById('tx').readOnly = false;
+            }
+        }
+    </script>
+</body>
+</html>
