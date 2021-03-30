@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <input type="file" multiple id="files">
+        <h3>Bytes: </h3>
+        <output id="listBytes"></output>
+        <h3>Bits: </h3>
+        <output id="listBits"></output>
+        <h3>Kilobytes: </h3>
+        <output id="listKb"></output>
+        <h3>Megabytes: </h3>
+        <output id="listmb"></output>
+        <script>
+            function round3(num) {
+                return +(Math.round(num + "e+3") + 'e-3');
+            }
+
+            function handleFileSelected(event) {
+                var files = event.target.files;
+                var outputB = [];
+                var outputb = [], outputKb = [], outputMb = [];
+
+                for (let i = 0; i < files.length; i++) {
+                    f = files[i]
+                    outputB.push('<li><strong>', f.name, '</strong> （', f.type || 'n//a', ') - ', f.size, 'bytes, last modified: ', 
+                        f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n//a', '</li>');
+                    outputb.push('<li><strong>', f.name, '</strong> （', f.type || 'n//a', ') - ', f.size * 1024, 'bits, last modified: ', 
+                        f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n//a', '</li>');
+                    outputKb.push('<li><strong>', f.name, '</strong> （', f.type || 'n//a', ') - ', round3(f.size / 1024), 'Kb, last modified: ', 
+                        f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n//a', '</li>');
+                    outputMb.push('<li><strong>', f.name, '</strong> （', f.type || 'n//a', ') - ', round3(f.size / (1024 * 2)), 'Mb, last modified: ', 
+                        f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n//a', '</li>');
+                }
+                document.getElementById('listBytes').innerHTML = '<ul>' + outputB.join(' ') + '</ul>';
+                document.getElementById('listBits').innerHTML = '<ul>' + outputb.join(' ') + '</ul>';
+                document.getElementById('listKb').innerHTML = '<ul>' + outputKb.join(' ') + '</ul>';
+                document.getElementById('listmb').innerHTML = '<ul>' + outputMb.join(' ') + '</ul>';
+                
+            }
+            document.getElementById('files').addEventListener('change', handleFileSelected)
+        </script>
+    </form>
+</body>
+</html>
